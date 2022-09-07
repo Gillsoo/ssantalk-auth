@@ -1,0 +1,55 @@
+server:
+  tomcat:
+    max-http-form-post-size: 60MB
+  servlet:
+    encoding:
+      force: true
+  port: 8090
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      pool-name: Hikari
+      auto-commit: false
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      max-lifetime: 1800000
+  jpa:
+    open-in-view: false # WebMvcConfiguration 에서 exclude pattern을 적용함.
+    properties:
+      hibernate.show_sql: false
+      hibernate.format_sql: true
+      hibernate.use_sql_comments: false
+      allow_update_outside_transaction: true
+  application:
+    name: ssantalk-auth
+  banner:
+    location: classpath:banner.text
+  jta:
+    enabled: false # JTA transaction을 사용하지 않는다.
+  liquibase:
+    enabled: false
+  web:
+    resources:
+      add-mappings: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 60MB
+  profiles:
+    active: #spring.profiles.active#
+
+logging:
+  config: ${log.config:classpath:logback.xml}
+
+application:
+  cluster:
+    cluster-name: ssantalk-auth
+    instance-name: node01
+    bind-address: 127.0.0.1
+  authorization:
+    session-timeout: 3600 # second
+    session-refresh: 60 # second
+  aria:
+    key: bGl2cmlvU3NhbnRhbGs=

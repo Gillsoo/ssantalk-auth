@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/apim?currentSchema=sst
+    username: apim
+    password: apim
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+logging:
+  config: classpath:logback.xml

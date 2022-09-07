@@ -1,0 +1,19 @@
+<configuration scan="false" debug="false">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%18.18t] %-50.50(%C{30}.%M:%L) : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--  실행 환경에서 application.trace=off 로 작성하여 레벨을 일괄 적으로 적용 / 개발 환경에서는  디버그 정보 출력 -->
+    <logger name="org.apache" level="WARN"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
+    <logger name="project.ssantalk.webapp" level="DEBUG"/>
+    <logger name="org.springframework.transaction" level="DEBUG"/>
+    <logger name="project.ssantalk.entity.mapper.MsgResultMapper" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

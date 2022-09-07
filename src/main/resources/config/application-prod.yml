@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/ssantalk?currentSchema=ssantalk
+    username: ssantalk
+    password: fldh0730!
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 500
+        order_inserts: true
+        order_update: true
+  banner:
+    location: classpath:banner-product.text
+logging:
+  config: classpath:logback-prod.xml
+application:
+  check-plus:
+    return-url: https://www.ssantalk.co.kr/app/auth/checkplus/success
+    error-url: https://www.ssantalk.co.kr/auth/checkplus/fail
+  rest:
+    connection-request-timeout: 10000
+    connect-timeout: 10000
+    socket-timeout: 11000
+  cluster:
+    cluster-name: ssantalk-cluster-prod
+    instance-name: ssantalk-instance-prod-1
+    multicastPort: 55327
+    basePort: 55701
+    bindAddress: 127.0.0.1
+
+file:
+  upload:
+    directory: /home/ssantalk/ssantalk_doc
+  mms_directory : /home/ssantalk/GTAgent/mmsfile
+
+pg:
+  token_url: https://api.iamport.kr/users/getToken
+  imp_key: '0254673967218706'
+  imp_secret: 24f00d9d33290d802281fb397fea9b9329499405da6abf1d9e549722fddcbfd2a4cb31cf693c47ff
+  payment_url : https://api.iamport.kr/payments
+  accept_ip_list : 52.78.100.19,52.78.48.223,192.168.0.52

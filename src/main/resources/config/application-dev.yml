@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/apim?currentSchema=sst
+    username: apim
+    password: apim
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 500
+        order_inserts: true
+        order_update: true
+  banner:
+    location: classpath:banner-develop.text
+logging:
+  config: classpath:logback-develop.xml
+application:
+  rest:
+    connection-request-timeout: 10000
+    connect-timeout: 10000
+    socket-timeout: 11000
+  cluster:
+    cluster-name: ssantalk-cluster-dev
+    instance-name: ssantalk-instance-dev-1
+    multicastPort: 55327
+    basePort: 55701
+    bindAddress: 127.0.0.1
